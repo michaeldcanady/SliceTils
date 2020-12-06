@@ -11,6 +11,15 @@ SliceTils (Slice Utilities) is a library adding in more functionalities and cont
 Currently SliceTils only supports int and string slices.
 
 ### Universal
+ * Min
+ * Max
+ * Equal
+ * NthRand
+ * TwoToOne
+ * IndexOf
+ * RemoveDup
+ * Convert
+ * Contains
 
 ### Int
 
