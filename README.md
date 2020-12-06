@@ -11,6 +11,15 @@ SliceTils (Slice Utilities) is a library adding in more functionalities and cont
 Currently SliceTils only supports int and string slices.
 
 ### Universal
+ * [Min](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go)
+ * [Max](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go)
+ * [Equal](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go)
+ * [NthRand](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go)
+ * [TwoToOne](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go)
+ * [IndexOf](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go)
+ * [RemoveDup](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go)
+ * [Convert](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go)
+ * [Contains](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go)
 
 ### Int
 
