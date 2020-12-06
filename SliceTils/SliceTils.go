@@ -114,15 +114,3 @@ func Contains(a,b interface{})(bool,int){
   }
   return false,-1
 }
-
-//func RemoveDuplicateValues(a interface{}){
-//  switch v := a.(type) {
-//  case []int:
-//    return removeDuplicateValuesInt(a.([]int))
-//  case []string:
-//    return removeDuplicateValuesStr(a.([]string))
-//  default:
-//    fmt.Errorf("%v is not a valid type",v)
-//  }
-//  return ""
-//}
