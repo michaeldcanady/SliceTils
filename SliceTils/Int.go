@@ -2,7 +2,6 @@ package slicetils
 
 import(
   "strconv"
-  "fmt"
 )
 
 // Gets the minimum value from a slice
@@ -27,31 +26,6 @@ func Max(array []int) int {
     return max
 }
 
-// Checks if two slices are equal
-func Equal(a, b interface{}) bool {
-  switch v := a.(type) {
-  case []int:
-    return equalInt(a.([]int),b.([]int))
-  case []string:
-    return equalStr(a.([]string),b.([]string))
-  default:
-    fmt.Errorf("%v is not a valid type",v)
-  }
-  return false
-}
-
-func equalStr(a, b []string) string {
-    if len(a) != len(b) {
-        return false
-    }
-    for i, v := range a {
-        if v != b[i] {
-            return false
-        }
-    }
-    return true
-}
-
 func equalInt(a, b []int) bool {
     if len(a) != len(b) {
         return false
@@ -65,7 +39,7 @@ func equalInt(a, b []int) bool {
 }
 
 // Removes duplicate values from an int slice
-func removeDuplicateValues(intSlice []int) []int {
+func RemoveDupInt(intSlice []int) []int {
     keys := make(map[int]bool)
     list := []int{}
 
