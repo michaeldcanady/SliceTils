@@ -78,20 +78,21 @@ func equalStr(a, b []string) bool {
 }
 
 // Removes duplicate values from an string slice
-func removeDupStr(intSlice []string) []string {
+func removeDupStr(intSlice *[]string){
     keys := make(map[string]bool)
     list := []string{}
 
     // If the key(values of the slice) is not equal
     // to the already present value in new slice (list)
     // then we append it. else we jump on another element.
-    for _, entry := range intSlice {
+    inSlice := *intSlice
+    for _, entry := range inSlice {
         if _, value := keys[entry]; !value {
             keys[entry] = true
             list = append(list, entry)
         }
     }
-    return list
+    *intSlice = inSlice
 }
 
 // Converts a 2D slice into a 1D slice

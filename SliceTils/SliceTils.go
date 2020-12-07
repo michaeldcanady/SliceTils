@@ -96,16 +96,15 @@ func SubSlice(a interface{}, b interface{})(bool){
 }
 
 // Removes all duplicate values from a
-func RemoveDup(a interface{})interface{}{
+func RemoveDup(a interface{}){
   switch v := a.(type) {
   case []int:
-    return removeDupInt(a.([]int))
+    removeDupInt(a.([]int))
   case []string:
-    return removeDupStr(a.([]string))
+    removeDupStr(a.([]string))
   default:
     fmt.Errorf("%v is not a valid type",v)
   }
-  return -1
 }
 
 // converts slice a, as type t, to t1
