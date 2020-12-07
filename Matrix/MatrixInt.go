@@ -2,6 +2,8 @@ package matrix
 
 import(
   "fmt"
+
+  "github.com/michaeldcanady/SliceTils/SliceTils"
 )
 
 type IntMatrix [][]int
@@ -33,10 +35,52 @@ func (I *IntMatrix) AppendRow(dat map[int]int){
   }
 }
 
-func (I *IntMatrix) Remove(col int){
+func (I *IntMatrix) RemoveCol(col int){
   S1 := *I
   S1 = append(S1[:col], S1[col+1:]...)
   *I = S1
+}
+
+func (I *IntMatrix) Any(value []int)bool{
+  for _,slices := range (*I){
+    for _,v := range slices{
+      for _,v1 := range value{
+        if v == v1{
+          return true
+        }
+      }
+    }
+  }
+  return false
+}
+
+func (I *IntMatrix) All(value []int)bool{
+  contained := []int{}
+  for _,v1 := range value{
+    for _,slices := range (*I){
+      for _,v := range slices{
+        if v == v1{
+          contained = append(contained,v1)
+        }
+      }
+    }
+  }
+  if slicetils.Equal(contained,value){
+    return true
+  }
+  return false
+}
+
+func (I *IntMatrix) RemoveRow(row int){
+  var NewMatrix IntMatrix
+  for _,col := range (*I){
+    newcol := col
+    newcol =  append(newcol[:row], newcol[row+1:]...)
+    col = newcol
+    NewMatrix = append(NewMatrix,col)
+
+  }
+  *I = NewMatrix
 }
 
 func keysInt(mymap map[int]int)[]int{

@@ -4,6 +4,7 @@ import(
   "fmt"
 )
 
+// Minimum := slicetils.Min([]int{}).([]int)
 func Min(a interface{})interface{}{
   switch v := a.(type){
   case []int:
@@ -80,6 +81,18 @@ func IndexOf(a interface{}, b interface{})(int){
     fmt.Errorf("%v is not a valid type",v)
   }
   return -1
+}
+
+func SubSlice(a interface{}, b interface{})(bool){
+  switch v := a.(type) {
+  case []int:
+    return subsliceInt(a.([]int),b.([]int))
+  case []string:
+    return subsliceStr(a.([]string),b.([]string))
+  default:
+    fmt.Errorf("%v is not a valid type",v)
+  }
+  return false
 }
 
 // Removes all duplicate values from a

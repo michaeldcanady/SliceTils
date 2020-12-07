@@ -21,6 +21,17 @@ func minStr(array []string)string{
   return min
 }
 
+func subsliceStr(s1 []string, s2 []string) bool {
+    if len(s1) > len(s2) { return false }
+    for _, e := range s1 {
+        b,_ := containStr(s2,e)
+        if !b{
+            return false
+        }
+    }
+    return true
+}
+
 // Finds the Highest letter contained in the slice
 func maxStr(array []string)string{
   var max string = Alpha[0]
@@ -54,6 +65,7 @@ func indexOfStr(element string, data []string) (int) {
 // Checks if the two slices are equal
 func equalStr(a, b []string) bool {
   sort.Strings(b)
+  sort.Strings(a)
   if len(a) != len(b) {
     return false
   }

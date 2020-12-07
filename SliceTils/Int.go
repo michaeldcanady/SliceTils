@@ -28,6 +28,17 @@ func maxInt(array []int) int {
     return max
 }
 
+func subsliceInt(s1 []int, s2 []int) bool {
+    if len(s1) > len(s2) { return false }
+    for _, e := range s1 {
+      b,_ := containInt(s2,e)
+        if !b{
+            return false
+        }
+    }
+    return true
+}
+
 // i is the number of values needed, r is the range of values needed
 func nthRandInt(i int,r int)[]int{
   s := []int{}
@@ -39,6 +50,7 @@ func nthRandInt(i int,r int)[]int{
 
 func equalInt(a, b []int) bool {
   sort.Ints(b)
+  sort.Ints(a)
   if len(a) != len(b) {
     return false
   }
