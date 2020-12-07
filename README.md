@@ -23,6 +23,7 @@ SliceTils (Slice Utilities) is a library adding in more functionalities and cont
 ## How To Use
 
 Any function that does not have a standard return value, such as: (ex: index(int) or bool), must be asserted as the desired value.
+
 Example:
 
 `minimum := slicetils.Min([]int}{1,2,3,4,5,6,7,...,nth}).(int)`
