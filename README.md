@@ -15,9 +15,9 @@ Currently SliceTils only supports int and string slices.
  * [Max([]slice)](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go) - This function gets the maximum of any slice provided.
  * [Equal([]slice,[]slice)](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go) - This function checks whether the two provided slices are equal.
  * [NthRand(int,type,int)](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go) - This function returns a randomly generated slice.
-  * The first parameter is the length of the slice.
-  * The second is the type of the slice, as a string.
-  * The third is only for integer slices, the range for the values.
+    * The first parameter is the length of the slice.
+    * The second is the type of the slice, as a string.
+    * The third is only for integer slices, the range for the values.
  * [TwoToOne([][]slice)](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go) - This function turns the provided 2D slice into a 1D slice.
  * [IndexOf(element,[]slice)](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go) - This function returns the index, within the slice, of the element.
  * [RemoveDup([]slice)](https://github.com/michaeldcanady/SliceTils/blob/main/SliceTils/SliceTils.go) - This function returns a modified slice without any repeating values
