@@ -3,10 +3,30 @@
 ## Table Of Contents
 [What is SliceTils](#WhatisSliceTils)
 
+[How To Setup](#HowToSetup)
+
+[How To Use](#HowToUse)
+
 [Commands](#Commands)
 
 ## What is SliceTils
 SliceTils (Slice Utilities) is a library adding in more functionalities and control for slices. Some of the commands have been engineered to accept all types of slices and handle them accordingly; the goal being to standardized and expedite the process.
+
+## How To Setup
+1. How to install
+`go get github.com/michaeldcanady/SliceTils`
+2. How to import
+`import github.com/michaeldcanady/SliceTils/SliceTils`
+3. How to use
+`slicetils.Min([]string{})`
+
+## How To Use
+
+Any function that does not have a standard return value, such as: (ex: index(int) or bool), must be asserted as the desired value
+Example:
+`minimum := slicetils.Min([]int}{1,2,3,4,5,6,7,...,nth}).(int)`
+`maximum := slicetils.Min([]int}{a,b,c,d,e,f,g,...,z}).(string)`
+`stringSlice := NthRand(100, "string", 0).([]string)`
 
 ## Commands
 Currently SliceTils only supports int and string slices.
