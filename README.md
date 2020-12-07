@@ -27,7 +27,9 @@ Any function that does not have a standard return value, such as: (ex: index(int
 Example:
 
 `minimum := slicetils.Min([]int}{1,2,3,4,5,6,7,...,nth}).(int)`
+
 `maximum := slicetils.Min([]int}{a,b,c,d,e,f,g,...,z}).(string)`
+
 `stringSlice := NthRand(100, "string", 0).([]string)`
 
 ## Commands
