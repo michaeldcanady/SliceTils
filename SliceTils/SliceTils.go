@@ -4,6 +4,42 @@ import(
   "fmt"
 )
 
+func SliceSpliter(slice interface{}, slicecount int)(interface{},error){
+  switch v := a.(type){
+  case []int:
+    return sliceSpliterInt(a.([]int),slicecount)
+  case []string:
+    return sliceSpliterStr(a.([]string),slicecount)
+  default:
+    fmt.Errorf("%v is not a valid type",v)
+  }
+  return false
+}
+
+func RemoveEmpty(a interface{})interface{}{
+  switch v := a.(type){
+  case []int:
+    return removeEmptyInt(a.([]int))
+  case []string:
+    return removeEmptyStr(a.([]string))
+  default:
+    fmt.Errorf("%v is not a valid type",v)
+  }
+  return false
+}
+
+func RemoveSlice(a interface{}, remove ...interface{})(interface{},error){
+  switch v := a.(type){
+  case []int:
+    return removeSliceInt(a.([]int),...remove)
+  case []string:
+    return removeSliceStr(a.([]string),...remove)
+  default:
+    fmt.Errorf("%v is not a valid type",v)
+  }
+  return false
+}
+
 // Minimum := slicetils.Min([]int{}).([]int)
 func Min(a interface{})interface{}{
   switch v := a.(type){

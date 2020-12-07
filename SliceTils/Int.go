@@ -6,6 +6,66 @@ import(
   "math/rand"
 )
 
+//Breaks main slice into subslices int
+func sliceSpliterInt(slice []string, slicecount int)([][]string, error){
+  var slices [][]string
+  slicelen := len(slice)
+  subSliceLen := (slicelen/slicecount)
+  for{
+    if subSliceLen < 1{
+      difference := slicecount - slicelen
+      slicecount = slicecount - difference
+      subSliceLen = (slicelen/slicecount)
+      return slices, errors.New(fmt.Sprintf("adjusts slicecount to %v due to, slice len < subslices.\n",slicecount))
+    }else{
+      break
+    }
+  }
+  remainer := (slicelen%slicecount)
+  n := 0
+  for n < slicelen{
+    var s []string
+    t := n+subSliceLen
+    if t != (slicelen-remainer){
+      s = slice[n:t]
+    }else{
+      t = (t+remainer)
+      s = slice[n:t]
+    }
+    slices = append(slices,s)
+    n = t
+  }
+  return slices,nil
+}
+
+// Removes empty values from int slice
+func removeEmptyInt(s []int) []int{
+  var r []int
+  for _, str := range s{
+    if str != 0{
+      r = append(r,str)
+    }
+  }
+  return r
+}
+
+// Removes integers from a slice
+func removeSliceInt(a []int, remove ...int)([]int,error){
+  // Remove the element at index i from a.
+  for _, s := range remove{
+    index := SliceIndex(len(a), func(i int) bool{return a[i] == s})
+    if index != -1{
+      copy(a[index:], a[index+1:]) // Shift a[i+1:] left one index.
+      a[len(a)-1] = 0     // Erase last element (write zero value).
+      a = a[:len(a)-1]     // Truncate slice.
+      a = RemoveEmptyInt(a)
+    }else{
+      return a, errors.New(fmt.Sprintf("'%v' is not in the slice\n",s))
+    }
+  }
+  return a, nil
+}
+
 // Gets the minimum value from a slice
 func minInt(array []int) int {
     var min int = array[0]
