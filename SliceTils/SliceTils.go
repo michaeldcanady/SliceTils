@@ -43,6 +43,7 @@ func Equal(a, b interface{})bool{
   return false
 }
 
+// Generates a random list of i size, type t, and if int or range r
 func NthRand(i int,t string,r int)interface{}{
   switch t{
   case "int":
@@ -55,6 +56,7 @@ func NthRand(i int,t string,r int)interface{}{
   return false
 }
 
+// Converts a 2D slice to 1D
 func TwoToOne(a interface{})interface{}{
   switch v := a.(type) {
   case [][]int:
@@ -67,6 +69,7 @@ func TwoToOne(a interface{})interface{}{
   return false
 }
 
+// Returns the index of a within b
 func IndexOf(a interface{}, b interface{})(int){
   switch v := a.(type) {
   case []int:
@@ -79,6 +82,7 @@ func IndexOf(a interface{}, b interface{})(int){
   return -1
 }
 
+// Removes all duplicate values from a
 func RemoveDup(a interface{})interface{}{
   switch v := a.(type) {
   case []int:
@@ -91,6 +95,8 @@ func RemoveDup(a interface{})interface{}{
   return -1
 }
 
+// converts slice a, as type t, to t1
+// Figure out how to add designation type
 func Convert(a interface{},t string)interface{}{
   switch t{
   case "int":
@@ -103,6 +109,7 @@ func Convert(a interface{},t string)interface{}{
   return -1
 }
 
+// Checks if a contains elem b, returns true and index if it does, returns false and -1 if not.
 func Contains(a,b interface{})(bool,int){
   switch v := a.(type) {
   case []int:
