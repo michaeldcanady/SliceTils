@@ -4,6 +4,8 @@ import(
   "strconv"
   "sort"
   "math/rand"
+  "errors"
+  "fmt"
 )
 
 var(
@@ -57,12 +59,12 @@ func removeEmptyStr(s []string) []string{
 func removeSliceStr(a []string, remove ...string)([]string,error){
   // Remove the element at index i from a.
   for _, s := range remove{
-    index := SliceIndex(len(a), func(i int) bool{return a[i] == s})
+    index := IndexOf(s,a)
     if index != -1{
       copy(a[index:], a[index+1:]) // Shift a[i+1:] left one index.
       a[len(a)-1] = ""     // Erase last element (write zero value).
       a = a[:len(a)-1]     // Truncate slice.
-      a = RemoveEmptyStr(a)
+      a = removeEmptyStr(a)
     }else{
       return a, errors.New(fmt.Sprintf("'%s' is not in the slice\n",s))
     }
@@ -138,21 +140,21 @@ func equalStr(a, b []string) bool {
 }
 
 // Removes duplicate values from an string slice
-func removeDupStr(intSlice *[]string){
+func removeDupStr(intSlice []string) []string {
     keys := make(map[string]bool)
     list := []string{}
 
     // If the key(values of the slice) is not equal
     // to the already present value in new slice (list)
     // then we append it. else we jump on another element.
-    inSlice := *intSlice
-    for _, entry := range inSlice {
+    for _, entry := range intSlice {
         if _, value := keys[entry]; !value {
+
             keys[entry] = true
             list = append(list, entry)
         }
     }
-    *intSlice = inSlice
+    return list
 }
 
 // Converts a 2D slice into a 1D slice
@@ -184,4 +186,14 @@ func containStr(s []string, e string)(bool,int) {
         }
     }
     return false,-1
+}
+
+func removeMemberStr(a []string, b string)[]string{
+  contains, index := containStr(a,b)
+  if contains == false{
+    panic(fmt.Sprint("that is not a value selection: %s,%s",a,b))
+  }else{
+    a[index] = ""
+  }
+  return removeEmptyStr(a)
 }

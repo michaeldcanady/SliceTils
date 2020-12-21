@@ -4,11 +4,13 @@ import(
   "strconv"
   "sort"
   "math/rand"
+  "errors"
+  "fmt"
 )
 
 //Breaks main slice into subslices int
-func sliceSpliterInt(slice []string, slicecount int)([][]string, error){
-  var slices [][]string
+func sliceSpliterInt(slice []int, slicecount int)([][]int, error){
+  var slices [][]int
   slicelen := len(slice)
   subSliceLen := (slicelen/slicecount)
   for{
@@ -24,7 +26,7 @@ func sliceSpliterInt(slice []string, slicecount int)([][]string, error){
   remainer := (slicelen%slicecount)
   n := 0
   for n < slicelen{
-    var s []string
+    var s []int
     t := n+subSliceLen
     if t != (slicelen-remainer){
       s = slice[n:t]
@@ -53,12 +55,12 @@ func removeEmptyInt(s []int) []int{
 func removeSliceInt(a []int, remove ...int)([]int,error){
   // Remove the element at index i from a.
   for _, s := range remove{
-    index := SliceIndex(len(a), func(i int) bool{return a[i] == s})
+    index := IndexOf(s,a)
     if index != -1{
       copy(a[index:], a[index+1:]) // Shift a[i+1:] left one index.
       a[len(a)-1] = 0     // Erase last element (write zero value).
       a = a[:len(a)-1]     // Truncate slice.
-      a = RemoveEmptyInt(a)
+      a = removeEmptyInt(a)
     }else{
       return a, errors.New(fmt.Sprintf("'%v' is not in the slice\n",s))
     }
@@ -176,4 +178,14 @@ func containInt(s []int, e int)(bool,int) {
         }
     }
     return false,-1
+}
+
+func removeMemberInt(a []int, b int)[]int{
+  contains, index := containInt(a,b)
+  if contains == false{
+    panic("that is not a value selection")
+  }else{
+    a[index] = 0
+  }
+  return removeEmptyInt(a)
 }

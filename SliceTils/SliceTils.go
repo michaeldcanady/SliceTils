@@ -4,7 +4,7 @@ import(
   "fmt"
 )
 
-func SliceSpliter(slice interface{}, slicecount int)(interface{},error){
+func SliceSpliter(a interface{}, slicecount int)(interface{},error){
   switch v := a.(type){
   case []int:
     return sliceSpliterInt(a.([]int),slicecount)
@@ -13,7 +13,7 @@ func SliceSpliter(slice interface{}, slicecount int)(interface{},error){
   default:
     fmt.Errorf("%v is not a valid type",v)
   }
-  return false
+  return "",fmt.Errorf("oops")
 }
 
 func RemoveEmpty(a interface{})interface{}{
@@ -28,16 +28,16 @@ func RemoveEmpty(a interface{})interface{}{
   return false
 }
 
-func RemoveSlice(a interface{}, remove ...interface{})(interface{},error){
+func RemoveSlice(a interface{}, remove interface{})(interface{},error){
   switch v := a.(type){
   case []int:
-    return removeSliceInt(a.([]int),...remove)
+    return removeSliceInt(a.([]int),remove.(int))
   case []string:
-    return removeSliceStr(a.([]string),...remove)
+    return removeSliceStr(a.([]string),remove.(string))
   default:
     fmt.Errorf("%v is not a valid type",v)
   }
-  return false
+  return false,fmt.Errorf("oops")
 }
 
 // Minimum := slicetils.Min([]int{}).([]int)
@@ -168,4 +168,16 @@ func Contains(a,b interface{})(bool,int){
     fmt.Errorf("%v is not a valid type",v)
   }
   return false,-1
+}
+
+func RemoveMember(a,b interface{})interface{}{
+  switch v := a.(type) {
+  case []int:
+    return removeMemberInt(a.([]int),b.(int))
+  case []string:
+    return removeMemberStr(a.([]string),b.(string))
+  default:
+    fmt.Errorf("%v is not a valid type",v)
+  }
+  return ""
 }
